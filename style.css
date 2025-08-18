@@ -192,9 +192,9 @@ textarea { min-height: 80px; resize: vertical; }
   .weekday-grid { grid-template-columns: repeat(3, 1fr); }
   .brand p { display: none; }
   .brand h1 { font-size: 18px; }
-  .container { width: 94vw; }
+  .container { width: 100%; padding-left: 16px; padding-right: 16px; }
   main.container { padding: 20px 0 40px; }
-  .card { padding: 14px; border-radius: 14px; }
+  .card { padding: 20px; border-radius: 16px; }
   .header-inner { padding: 14px 0; }
 }
 
