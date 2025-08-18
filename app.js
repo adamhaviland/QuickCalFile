@@ -23,6 +23,7 @@
   const resetBtn = document.getElementById('resetBtn');
   const errorEl = document.getElementById('error');
   const recapEl = document.getElementById('recap');
+  const themeToggleBtn = document.getElementById('themeToggle');
 
   function setControlsVisibility() {
     const isAllDay = isAllDayInput.checked;
@@ -52,6 +53,7 @@
     isRecurringInput.checked = true;
     setControlsVisibility();
     errorEl.textContent = '';
+    refreshRecap();
   });
 
   function showError(message) {
@@ -372,6 +374,36 @@
     downloadICS(ics);
   });
 
+  // Theme toggle and persistence
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (themeToggleBtn) {
+      if (theme === 'dark') {
+        themeToggleBtn.textContent = '☀️ Light';
+        themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
+      } else {
+        themeToggleBtn.textContent = '🌙 Dark';
+        themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+      }
+    }
+  }
+
+  function initTheme() {
+    const stored = localStorage.getItem('qcf-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    applyTheme(theme);
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('qcf-theme', next); } catch (_) {}
+    });
+  }
+
   // Live recap updates
   ['input','change'].forEach(evt => {
     [summaryInput, locationInput, descriptionInput, isAllDayInput, isRecurringInput, startDateInput, endDateInput, startTimeInput, endTimeInput, specificDatesInput, isSpecificInput]
@@ -395,6 +427,7 @@
 
     setControlsVisibility();
     refreshRecap();
+    initTheme();
   })();
 })();
 

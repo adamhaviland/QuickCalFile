@@ -12,6 +12,19 @@
   --border: #e5e5ea;
 }
 
+[data-theme="dark"] {
+  --bg: #0b1020;
+  --panel: #12172a;
+  --panel-2: #0f1426;
+  --text: #e8eaf2;
+  --muted: #a6accd;
+  --accent: #0b84fe;
+  --accent-2: #7ab7ff;
+  --danger: #ff6b6b;
+  --ring: rgba(11, 132, 254, 0.5);
+  --border: rgba(255,255,255,0.12);
+}
+
 * { box-sizing: border-box; }
 
 html, body { height: 100%; }
@@ -24,6 +37,7 @@ body {
     radial-gradient(1200px 600px at 80% -10%, rgba(10, 132, 255, 0.08), transparent 60%),
     radial-gradient(900px 500px at -10% 0%, rgba(0, 0, 0, 0.06), transparent 60%),
     var(--bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 .container {
@@ -39,6 +53,11 @@ body {
   -webkit-backdrop-filter: saturate(1.4) blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 10;
+  padding-top: env(safe-area-inset-top);
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(11, 16, 32, 0.6);
 }
 
 .header-inner {
@@ -92,6 +111,7 @@ input[type="text"], input[type="date"], input[type="time"], textarea {
   border-radius: 12px;
   padding: 12px 14px;
   outline: none;
+  font-size: 16px; /* Prevent iOS zoom on focus */
 }
 
 input:focus, textarea:focus {
@@ -135,6 +155,8 @@ textarea { min-height: 80px; resize: vertical; }
   border-radius: 12px;
   border: 1px solid transparent;
   cursor: pointer;
+  min-height: 44px; /* Comfortable touch target */
+  font-weight: 600;
 }
 
 .btn-primary {
@@ -153,10 +175,20 @@ textarea { min-height: 80px; resize: vertical; }
 .error { color: var(--danger); min-height: 20px; }
 
 .site-footer { color: var(--muted); text-align: center; padding: 28px 0 60px; }
+.site-footer { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
 
 @media (max-width: 720px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; gap: 12px; }
   .weekday-grid { grid-template-columns: repeat(4, 1fr); }
+  .card { padding: 18px; }
+  .actions { flex-direction: column; }
+  .actions .btn { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .weekday-grid { grid-template-columns: repeat(3, 1fr); }
+  .brand p { display: none; }
+  .brand h1 { font-size: 18px; }
 }
 
 
