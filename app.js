@@ -27,8 +27,8 @@
 
   function setControlsVisibility() {
     const isAllDay = isAllDayInput.checked;
-    const isRecurring = isRecurringInput.checked;
     const isSpecific = isSpecificInput && isSpecificInput.checked;
+    const isRecurring = isSpecific ? false : isRecurringInput.checked;
 
     startTimeWrap.style.display = isAllDay ? 'none' : '';
     endTimeWrap.style.display = isAllDay ? 'none' : '';
@@ -42,6 +42,14 @@
       // If not recurring, end date should mirror start date (single-day event)
       endDateInput.value = '';
     }
+
+    // Enforce mutual exclusivity and disabling
+    if (isSpecific) {
+      isRecurringInput.checked = false;
+      isRecurringInput.disabled = true;
+    } else {
+      isRecurringInput.disabled = false;
+    }
   }
 
   isAllDayInput.addEventListener('change', setControlsVisibility);
@@ -50,7 +58,7 @@
 
   resetBtn.addEventListener('click', () => {
     form.reset();
-    isRecurringInput.checked = true;
+    isRecurringInput.checked = false;
     setControlsVisibility();
     errorEl.textContent = '';
     refreshRecap();
@@ -255,7 +263,7 @@
     if (!summaryInput.value.trim()) return 'Please enter an event name.';
 
     const isSpecific = isSpecificInput && isSpecificInput.checked;
-    const isRecurring = isRecurringInput.checked;
+    const isRecurring = (isSpecificInput && isSpecificInput.checked) ? false : isRecurringInput.checked;
     const isAllDay = isAllDayInput.checked;
 
     if (isSpecific) {
@@ -292,7 +300,7 @@
       .replace(/\..+/, 'Z');
 
     const isAllDay = isAllDayInput.checked;
-    const isRecurring = isRecurringInput.checked;
+    const isRecurring = (isSpecificInput && isSpecificInput.checked) ? false : isRecurringInput.checked;
     const occurrences = buildOccurrences();
     const [sh, sm] = (startTimeInput.value || '00:00').split(':').map(Number);
     const [eh, em] = (endTimeInput.value || '00:00').split(':').map(Number);
@@ -413,18 +421,7 @@
 
   // Prefill some helpful defaults
   (function initDefaults() {
-    const today = new Date();
-    const y = today.getFullYear();
-    const m = String(today.getMonth() + 1).padStart(2, '0');
-    const d = String(today.getDate()).padStart(2, '0');
-    startDateInput.value = `${y}-${m}-${d}`;
-
-    // Preselect Tue/Thu for convenience
-    const chips = weekdayWrap.querySelectorAll('input[type="checkbox"]');
-    chips.forEach(ch => {
-      if (ch.value === '2' || ch.value === '4') ch.checked = true;
-    });
-
+    // No prefilled values; keep fields blank per request
     setControlsVisibility();
     refreshRecap();
     initTheme();

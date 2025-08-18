@@ -34,29 +34,29 @@
           <div class="grid">
             <label class="field">
               <span class="label">Event name</span>
-              <input type="text" id="summary" placeholder="Flag Football Practice" required />
+              <input type="text" id="summary" required />
             </label>
 
             <label class="field">
-              <span class="label">Location</span>
-              <input type="text" id="location" placeholder="Falcon Heights Middle School" />
+              <span class="label">Location (name & address)</span>
+              <input type="text" id="location" />
             </label>
 
             <label class="field field--full">
               <span class="label">Description</span>
-              <textarea id="description" placeholder="Optional notes, coach name, what to bring, etc."></textarea>
+              <textarea id="description"></textarea>
             </label>
 
             <div class="field field--inline">
               <label class="checkbox">
-                <input type="checkbox" id="isAllDay" />
+                <input type="checkbox" id="isAllDay" checked />
                 <span>All-day event</span>
               </label>
             </div>
 
             <div class="field field--inline">
               <label class="checkbox">
-                <input type="checkbox" id="isRecurring" checked />
+                <input type="checkbox" id="isRecurring" />
                 <span>Repeat weekly</span>
               </label>
             </div>
@@ -80,12 +80,12 @@
 
             <label class="field time-field" id="startTimeWrap">
               <span class="label">Start time</span>
-              <input type="time" id="startTime" value="19:30" />
+              <input type="time" id="startTime" />
             </label>
 
             <label class="field time-field" id="endTimeWrap">
               <span class="label">End time</span>
-              <input type="time" id="endTime" value="20:30" />
+              <input type="time" id="endTime" />
             </label>
 
             <fieldset class="field field--full" id="weekdayWrap">
@@ -103,7 +103,7 @@
 
             <label class="field field--full" id="specificDatesWrap" style="display:none">
               <span class="label">Specific dates (one per line)</span>
-              <textarea id="specificDates" placeholder="e.g. 2025-08-21&#10;8/26/2025&#10;9/2/25"></textarea>
+              <textarea id="specificDates"></textarea>
             </label>
           </div>
 
