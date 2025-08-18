@@ -41,7 +41,7 @@ body {
 }
 
 .container {
-  width: min(1100px, 92vw);
+  width: min(980px, 92vw);
   margin-inline: auto;
 }
 
@@ -114,6 +114,8 @@ input[type="text"], input[type="date"], input[type="time"], textarea {
   font-size: 16px; /* Prevent iOS zoom on focus */
 }
 
+input::placeholder, textarea::placeholder { color: var(--muted); }
+
 input:focus, textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px var(--ring);
@@ -178,9 +180,10 @@ textarea { min-height: 80px; resize: vertical; }
 .site-footer { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
 
 @media (max-width: 720px) {
+  body { background: var(--bg); }
   .grid { grid-template-columns: 1fr; gap: 12px; }
   .weekday-grid { grid-template-columns: repeat(4, 1fr); }
-  .card { padding: 18px; }
+  .card { padding: 18px; box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06); }
   .actions { flex-direction: column; }
   .actions .btn { width: 100%; }
 }
@@ -189,6 +192,10 @@ textarea { min-height: 80px; resize: vertical; }
   .weekday-grid { grid-template-columns: repeat(3, 1fr); }
   .brand p { display: none; }
   .brand h1 { font-size: 18px; }
+  .container { width: 94vw; }
+  main.container { padding: 20px 0 40px; }
+  .card { padding: 14px; border-radius: 14px; }
+  .header-inner { padding: 14px 0; }
 }
 
 
