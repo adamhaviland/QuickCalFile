@@ -186,6 +186,7 @@ textarea { min-height: 80px; resize: vertical; }
   .card { padding: 18px; box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06); }
   .actions { flex-direction: column; }
   .actions .btn { width: 100%; }
+  #startDateWrap, #endDateWrap { padding-left: 6px; padding-right: 6px; }
 }
 
 @media (max-width: 480px) {
@@ -196,6 +197,7 @@ textarea { min-height: 80px; resize: vertical; }
   main.container { padding: 20px 0 40px; }
   .card { padding: 20px; border-radius: 16px; }
   .header-inner { padding: 14px 0; }
+  #startDateWrap, #endDateWrap { padding-left: 10px; padding-right: 10px; }
 }
 
 
