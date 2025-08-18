@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quick Cal File — Create ICS Calendar Files Fast</title>
+    <meta name="description" content="Generate downloadable .ics files for Apple Calendar, Google Calendar, and Outlook with a clean, modern interface." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23ffffff'/%3E%3Cpath d='M25 20h50a7 7 0 0 1 7 7v46a7 7 0 0 1-7 7H25a7 7 0 0 1-7-7V27a7 7 0 0 1 7-7zm8 14h34v4H33v-4zm0 14h34v4H33v-4zm0 14h22v4H33v-4z' fill='%230b84fe'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">🗓️</div>
+          <div class="brand-text">
+            <h1>Quick Cal File</h1>
+            <p>Create ICS files in seconds</p>
+          </div>
+        </div>
+        
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Event details</h2>
+        <form id="event-form" novalidate>
+          <div class="grid">
+            <label class="field">
+              <span class="label">Event name</span>
+              <input type="text" id="summary" placeholder="Flag Football Practice" required />
+            </label>
+
+            <label class="field">
+              <span class="label">Location</span>
+              <input type="text" id="location" placeholder="Falcon Heights Middle School" />
+            </label>
+
+            <label class="field field--full">
+              <span class="label">Description</span>
+              <textarea id="description" placeholder="Optional notes, coach name, what to bring, etc."></textarea>
+            </label>
+
+            <div class="field field--inline">
+              <label class="checkbox">
+                <input type="checkbox" id="isAllDay" />
+                <span>All-day event</span>
+              </label>
+            </div>
+
+            <div class="field field--inline">
+              <label class="checkbox">
+                <input type="checkbox" id="isRecurring" checked />
+                <span>Repeat weekly</span>
+              </label>
+            </div>
+
+            <div class="field field--inline" id="isSpecificWrap">
+              <label class="checkbox">
+                <input type="checkbox" id="isSpecific" />
+                <span>Use specific dates</span>
+              </label>
+            </div>
+
+            <label class="field" id="startDateWrap">
+              <span class="label">Start date</span>
+              <input type="date" id="startDate" required />
+            </label>
+
+            <label class="field" id="endDateWrap">
+              <span class="label">End date</span>
+              <input type="date" id="endDate" />
+            </label>
+
+            <label class="field time-field" id="startTimeWrap">
+              <span class="label">Start time</span>
+              <input type="time" id="startTime" value="19:30" />
+            </label>
+
+            <label class="field time-field" id="endTimeWrap">
+              <span class="label">End time</span>
+              <input type="time" id="endTime" value="20:30" />
+            </label>
+
+            <fieldset class="field field--full" id="weekdayWrap">
+              <legend class="label">Days of the week</legend>
+              <div class="weekday-grid">
+                <label class="chip"><input type="checkbox" value="0" />Sun</label>
+                <label class="chip"><input type="checkbox" value="1" />Mon</label>
+                <label class="chip"><input type="checkbox" value="2" />Tue</label>
+                <label class="chip"><input type="checkbox" value="3" />Wed</label>
+                <label class="chip"><input type="checkbox" value="4" />Thu</label>
+                <label class="chip"><input type="checkbox" value="5" />Fri</label>
+                <label class="chip"><input type="checkbox" value="6" />Sat</label>
+              </div>
+            </fieldset>
+
+            <label class="field field--full" id="specificDatesWrap" style="display:none">
+              <span class="label">Specific dates (one per line)</span>
+              <textarea id="specificDates" placeholder="e.g. 2025-08-21&#10;8/26/2025&#10;9/2/25"></textarea>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="downloadBtn" class="btn btn-primary">Download .ics</button>
+            <button type="button" id="resetBtn" class="btn btn-ghost">Reset</button>
+          </div>
+          <p id="error" class="error" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="card subtle">
+        <h3>Recap</h3>
+        <p id="recap">Fill in details above to see a recap of your event.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Made with ❤️ for fast calendar events. I found this really helpful and thought I’d share it with others. Enjoy!</p>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
+
+
