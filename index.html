@@ -33,7 +33,7 @@
         <form id="event-form" novalidate>
           <div class="field field--full" id="bulkWrap">
             <div class="field" style="margin: 6px 0 12px 0">
-              <span class="label">You know, like the Vikings or Gophers schedule, or maybe your kid’s basketball practices.</span>
+              <span class="label">You know, like the Vikings or Wolves schedule, or maybe your kid’s soccer practices.</span>
               <textarea id="bulkPaste" placeholder="Paste dates here. One per line, or separated by commas."></textarea>
               <div class="actions" style="margin-top:8px">
                 <button type="button" id="bulkParseBtn" class="btn btn-primary">Add dates to table</button>
@@ -63,6 +63,30 @@
       <section class="card subtle">
         <h3>Recap</h3>
         <p id="recap">Paste dates and build your table to see a recap.</p>
+      </section>
+
+      <section class="card">
+        <details id="extractSection">
+          <summary>Extract dates from text</summary>
+          <div class="field field--full" style="margin-top:10px">
+            <span class="label">Paste a bunch of stuff here and we'll extract the dates for you.</span>
+            <textarea id="extractInput" placeholder="Paste here..."></textarea>
+          </div>
+
+          <div class="actions" style="margin-top:12px">
+            <button id="extractBtn" type="button" class="btn btn-primary">Extract dates</button>
+            <button id="extractReset" type="button" class="btn btn-ghost">Reset</button>
+          </div>
+
+          <div class="field field--full" style="margin-top:12px">
+            <span class="label">Extracted dates (one per line)</span>
+            <textarea id="extractOutput" readonly placeholder="Results will appear here..."></textarea>
+          </div>
+          <div class="actions" style="margin-top:8px">
+            <button id="extractCopy" type="button" class="btn btn-ghost">Copy results</button>
+          </div>
+          <p id="extractError" class="error" role="alert" aria-live="polite"></p>
+        </details>
       </section>
     </main>
 
