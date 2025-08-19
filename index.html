@@ -29,82 +29,27 @@
 
     <main class="container">
       <section class="card">
-        <h2>Event details</h2>
+        <h2>Bulk create calendar events</h2>
         <form id="event-form" novalidate>
-          <div class="grid">
-            <label class="field">
-              <span class="label">Event name</span>
-              <input type="text" id="summary" required />
-            </label>
-
-            <label class="field">
-              <span class="label">Location (name & address)</span>
-              <input type="text" id="location" />
-            </label>
-
-            <label class="field field--full">
-              <span class="label">Description</span>
-              <textarea id="description"></textarea>
-            </label>
-
-            <div class="field field--inline">
-              <label class="checkbox">
-                <input type="checkbox" id="isAllDay" checked />
-                <span>All-day event</span>
-              </label>
-            </div>
-
-            <div class="field field--inline">
-              <label class="checkbox">
-                <input type="checkbox" id="isRecurring" />
-                <span>Repeat weekly</span>
-              </label>
-            </div>
-
-            <div class="field field--inline" id="isSpecificWrap">
-              <label class="checkbox">
-                <input type="checkbox" id="isSpecific" />
-                <span>Use specific dates</span>
-              </label>
-            </div>
-
-            <label class="field" id="startDateWrap">
-              <span class="label">Start date</span>
-              <input type="date" id="startDate" required />
-            </label>
-
-            <label class="field" id="endDateWrap">
-              <span class="label">End date</span>
-              <input type="date" id="endDate" />
-            </label>
-
-            <label class="field time-field" id="startTimeWrap">
-              <span class="label">Start time</span>
-              <input type="time" id="startTime" />
-            </label>
-
-            <label class="field time-field" id="endTimeWrap">
-              <span class="label">End time</span>
-              <input type="time" id="endTime" />
-            </label>
-
-            <fieldset class="field field--full" id="weekdayWrap">
-              <legend class="label">Days of the week</legend>
-              <div class="weekday-grid">
-                <label class="chip"><input type="checkbox" value="0" />Sun</label>
-                <label class="chip"><input type="checkbox" value="1" />Mon</label>
-                <label class="chip"><input type="checkbox" value="2" />Tue</label>
-                <label class="chip"><input type="checkbox" value="3" />Wed</label>
-                <label class="chip"><input type="checkbox" value="4" />Thu</label>
-                <label class="chip"><input type="checkbox" value="5" />Fri</label>
-                <label class="chip"><input type="checkbox" value="6" />Sat</label>
+          <div class="field field--full" id="bulkWrap">
+            <div class="field" style="margin: 6px 0 12px 0">
+              <span class="label">You know, like the Vikings or Gophers schedule, or maybe your kid’s basketball practices.</span>
+              <textarea id="bulkPaste" placeholder="Paste dates here. One per line, or separated by commas."></textarea>
+              <div class="actions" style="margin-top:8px">
+                <button type="button" id="bulkParseBtn" class="btn btn-primary">Add dates to table</button>
+                <button type="button" id="bulkAddBtn" class="btn btn-ghost">Add empty row</button>
               </div>
-            </fieldset>
-
-            <label class="field field--full" id="specificDatesWrap" style="display:none">
-              <span class="label">Specific dates (one per line)</span>
-              <textarea id="specificDates"></textarea>
-            </label>
+            </div>
+            <div class="bulk-table">
+              <div class="bulk-header">
+                <div>Date</div>
+                <div>Title</div>
+                <div>Time / All Day</div>
+                <div>Location</div>
+                <div></div>
+              </div>
+              <div id="bulkList" class="bulk-list"></div>
+            </div>
           </div>
 
           <div class="actions">
@@ -117,7 +62,7 @@
 
       <section class="card subtle">
         <h3>Recap</h3>
-        <p id="recap">Fill in details above to see a recap of your event.</p>
+        <p id="recap">Paste dates and build your table to see a recap.</p>
       </section>
     </main>
 
